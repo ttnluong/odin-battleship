@@ -37,5 +37,3 @@ export class Gameboard {
         
     
 }
-
-const ship = new Ship(length);
