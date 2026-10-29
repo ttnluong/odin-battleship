@@ -7,6 +7,10 @@ beforeEach(() => {
     gameboard = new Gameboard();
 })
 
-test("create grid with coordinates", () => {
-    expect(gameboard.createBoard(2, 2)).toEqual([[null, null], [null, null]]);
+test("check square in grid with coordinates", () => {
+    expect(gameboard.getSquare([0, 9])).toEqual(null);
+});
+
+test("check square outside of grid", () => {
+    expect(gameboard.getSquare([10, 0])).toEqual(undefined);
 });
