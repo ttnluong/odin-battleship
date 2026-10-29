@@ -6,15 +6,9 @@ export class Gameboard {
     }
 
     createBoard(rows, columns) {
-        let grid = [];
-        for (let i = 0; i < rows; i++) {
-            let row = [];
-            for (let j = 0; j < columns; j++) {
-                row.push(null);
-            }
-            grid.push(row);
-        }
-        return grid;
+        return Array.from({ length: rows }, () =>
+            Array.from({ length: columns }, () => null)
+        );
     }
 
     placeShip() {
