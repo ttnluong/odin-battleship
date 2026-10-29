@@ -2,16 +2,17 @@ import { Ship } from "./ship.js"
 
 export class Gameboard {
     constructor() {
-        this.board = this.createBoard(10, 10);
+        this.board = this.createBoard(9, 9);
     }
 
     createBoard(rows, columns) {
         let grid = [];
-        for (let i = 1; i <= rows; i++) {
-            for (let j = 1; j <= columns; j++) {
-                let coordinate = {row:i, col:j};
-                grid.push(coordinate);
+        for (let i = 0; i < rows; i++) {
+            let row = [];
+            for (let j = 0; j < columns; j++) {
+                row.push(null);
             }
+            grid.push(row);
         }
         return grid;
     }

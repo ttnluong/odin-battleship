@@ -8,5 +8,5 @@ beforeEach(() => {
 })
 
 test("create grid with coordinates", () => {
-    expect(gameboard.createBoard(2, 2)).toEqual([{row:1, col:1}, {row:1, col:2}, {row:2, col:1}, {row:2, col:2}]);
+    expect(gameboard.createBoard(2, 2)).toEqual([[null, null], [null, null]]);
 });
