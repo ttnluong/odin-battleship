@@ -16,7 +16,26 @@ export class Gameboard {
         return this.board[row][col];
     }
 
-    placeShip() {
+    placeShip([row, col], length, direction) {
+        const placement = [];
+        for (let i = 0; i < length; i++) {
+            const coords = direction === 'horizontal' ? [row, col +i] : [row + i, col];
+            placement.push(coords);
+        }
 
+        for (const place of placement) {
+            if (this.getSquare(place) !== null) throw Error('Invalid placement');
+        }
+
+        const ship = new Ship(length);
+        for (const [r, c] of placement) {
+            this.board[r][c] = ship;
+        }
+
+        return ship;
     }
+        
+    
 }
+
+const ship = new Ship(length);
