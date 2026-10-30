@@ -38,4 +38,16 @@ describe("place ship", () => {
         expect(gameboard.getSquare([3, 2])).toBe(null);
         expect(gameboard.getSquare([3, 4])).toBe(null);
     });
+
+    test("rejects placing a ship off-board, throws error", () => {
+        expect(() => gameboard.placeShip([9, 9], 2, 'horizontal')).toThrow('Invalid placement');
+        expect(gameboard.getSquare([9, 9])).toBe(null);
+    });
+
+    test("rejects an overlapping ship, throws error", () => {
+        const horShip = gameboard.placeShip([1, 1], 2, 'horizontal');
+        expect(() => gameboard.placeShip([0, 2], 2, 'vertical')).toThrow('Invalid placement');
+        expect(gameboard.getSquare([0, 2])).toBe(null);
+        expect(gameboard.getSquare([1, 1])).toBe(horShip);
+    });
 })
