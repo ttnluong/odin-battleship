@@ -5,6 +5,7 @@ export class Gameboard {
     this.board = this.createBoard(10, 10);
     this.ships = [];
     this.misses = [];
+    this.attacked = new Set();
   }
 
   createBoard(rows, columns) {
@@ -42,6 +43,11 @@ export class Gameboard {
   receiveAttack([row, col]) {
     if (this.getSquare([row, col]) === undefined)
       throw new Error("Invalid attack");
+
+    const attack = `${row}, ${col}`;
+    if (this.attacked.has(attack)) throw new Error("Square already attacked");
+    this.attacked.add(attack);
+
     if (this.getSquare([row, col]) === null) this.misses.push([row, col]);
     else this.board[row][col].hit();
   }

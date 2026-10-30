@@ -68,6 +68,24 @@ describe("receive attack", () => {
     expect(horShip.hitcount).toBe(0);
     expect(gameboard.getMisses()).toContainEqual([2, 1]);
   });
+
+  test("two misses on the same square, throws an error", () => {
+    gameboard.receiveAttack([2, 1]);
+    expect(() => gameboard.receiveAttack([2, 1])).toThrow(
+      "Square already attacked",
+    );
+    expect(gameboard.getMisses()).toContainEqual([2, 1]);
+    expect(gameboard.getMisses()).toHaveLength(1);
+  });
+
+  test("two hits on the same ship square, throws an error", () => {
+    const horShip = gameboard.placeShip([3, 1], 2, "horizontal");
+    gameboard.receiveAttack([3, 1]);
+    expect(() => gameboard.receiveAttack([3, 1])).toThrow(
+      "Square already attacked",
+    );
+    expect(horShip.hitcount).toBe(1);
+  });
 });
 
 describe("game over?", () => {
