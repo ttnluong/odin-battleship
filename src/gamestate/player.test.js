@@ -1,11 +1,11 @@
 import { describe, expect, test, beforeEach } from "@jest/globals";
 import { Player } from "./player.js";
 
-let human;
+let player;
 let computer;
 
 beforeEach(() => {
-  human = new Player("Human");
+  player = new Player("Player");
   computer = new Player("Computer", true);
 });
 
@@ -27,5 +27,5 @@ test("untriedSquares has no duplicates", () => {
 });
 
 test("a human player has no untriedSquares", () => {
-  expect(human.untriedSquares).toBeUndefined();
+  expect(player.untriedSquares).toBeUndefined();
 });
