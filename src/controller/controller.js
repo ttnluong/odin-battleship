@@ -1,4 +1,7 @@
-import { Player, ComputerPlayer } from "../game/player.js";
+import { Player, ComputerPlayer } from "../gamestate/player.js";
 
-new Player(player);
-new ComputerPlayer(Computer);
+function newGame() {
+  new Player(player);
+  new ComputerPlayer(Computer);
+  displayBoard();
+}
