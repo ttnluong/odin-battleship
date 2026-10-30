@@ -51,3 +51,18 @@ describe("place ship", () => {
         expect(gameboard.getSquare([1, 1])).toBe(horShip);
     });
 })
+
+describe("receive attack", () => {
+    test("a hit damages the ship", () => {
+        const horShip = gameboard.placeShip([1, 1], 2, 'horizontal');
+        gameboard.receiveAttack([1, 1]);
+        expect(horShip.hitcount).toBe(1);
+    });
+
+    test("a miss does not damage the ship", () => {
+        const horShip = gameboard.placeShip([1, 1], 2, 'horizontal');
+        gameboard.receiveAttack([2, 1]);
+        expect(horShip.hitcount).toBe(0);
+        expect(gameboard.getMisses()).toContainEqual([2, 1]);
+    });
+})
