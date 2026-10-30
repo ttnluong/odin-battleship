@@ -69,3 +69,33 @@ describe("receive attack", () => {
     expect(gameboard.getMisses()).toContainEqual([2, 1]);
   });
 });
+
+describe("game over?", () => {
+  test("empty board is not game over", () => {
+    expect(gameboard.gameOver()).toBe(false);
+  });
+
+  test("board with one ship, damaged but not sunk, is not game over", () => {
+    gameboard.placeShip([1, 1], 2, "horizontal");
+    gameboard.receiveAttack([1, 1]);
+    expect(gameboard.gameOver()).toBe(false);
+  });
+
+  test("board with two ships, one not sunk, is not game over", () => {
+    gameboard.placeShip([3, 3], 3, "vertical");
+    gameboard.placeShip([1, 1], 2, "horizontal");
+    gameboard.receiveAttack([1, 1]);
+    gameboard.receiveAttack([1, 2]);
+    expect(gameboard.gameOver()).toBe(false);
+  });
+
+  test("board with two ships, both sunk, is game over", () => {
+    gameboard.placeShip([3, 3], 2, "vertical");
+    gameboard.placeShip([1, 1], 2, "horizontal");
+    gameboard.receiveAttack([1, 1]);
+    gameboard.receiveAttack([1, 2]);
+    gameboard.receiveAttack([3, 3]);
+    gameboard.receiveAttack([4, 3]);
+    expect(gameboard.gameOver()).toBe(true);
+  });
+});
