@@ -56,6 +56,13 @@ export class Gameboard {
     return [...this.misses];
   }
 
+  getSquareState([row, col]) {
+    const attacked = this.attacked.has(`${row}, ${col}`);
+    const hasShip = this.getSquare([row, col]) !== null;
+    if (attacked) return hasShip ? "hit" : "miss";
+    return hasShip ? "ship" : "empty";
+  }
+
   gameOver() {
     const ships = this.ships;
     if (ships.length === 0) return false;
