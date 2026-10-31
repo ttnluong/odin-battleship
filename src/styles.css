@@ -74,24 +74,28 @@ body {
   height: 100vh;
   font-family: "Inter Variable";
   font-weight: 350;
-  color: #fff;
-  background-color: cornflowerblue;
-}
-
-.container {
-  height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 400px;
 }
 
 /* SECTION
 ====================================================== */
+
+.boards {
+  display: flex;
+  gap: 100px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+}
+
+.square {
+  border: 1px solid black;
+}
+
+.ship {
+  background-color: bisque;
+}
