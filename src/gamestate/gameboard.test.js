@@ -88,6 +88,33 @@ describe("receive attack", () => {
   });
 });
 
+describe("get square states", () => {
+  test("the square returns empty on a new board", () => {
+    expect(gameboard.getSquareState([2, 2])).toBe("empty");
+  });
+
+  test("after placing a ship, the square returns ship", () => {
+    gameboard.placeShip([2, 2], 2, "horizontal");
+    expect(gameboard.getSquareState([2, 2])).toBe("ship");
+    expect(gameboard.getSquareState([3, 2])).toBe("empty");
+  });
+
+  test("after attacking a ship, the square returns hit", () => {
+    gameboard.placeShip([3, 3], 3, "vertical");
+    gameboard.receiveAttack([4, 3]);
+    expect(gameboard.getSquareState([4, 3])).toBe("hit");
+    expect(gameboard.getSquareState([3, 3])).toBe("ship");
+    expect(gameboard.getSquareState([5, 3])).toBe("ship");
+    expect(gameboard.getSquareState([4, 4])).toBe("empty");
+  });
+
+  test("after attacking an empty square, the square returns miss", () => {
+    gameboard.placeShip([3, 3], 2, "vertical");
+    gameboard.receiveAttack([3, 4]);
+    expect(gameboard.getSquareState([1, 2])).toBe("miss");
+  });
+});
+
 describe("game over?", () => {
   test("empty board is not game over", () => {
     expect(gameboard.gameOver()).toBe(false);
