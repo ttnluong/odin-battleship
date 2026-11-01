@@ -21,3 +21,19 @@ export function displayBoard(gameboard, container, isComputer = false) {
     }
   }
 }
+
+export function onSquareClick(container, handler) {
+  const board = document.getElementById(container);
+  board.addEventListener("click", (event) => {
+    const square = event.target.closest(".square");
+    if (!square) return;
+
+    row = Number(square.dataset.row);
+    col = Number(square.dataset.col);
+    handler([row, col]);
+  });
+}
+
+export function showMessage(text) {
+  document.getElementById("message").textContent = text;
+}
