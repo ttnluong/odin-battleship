@@ -48,8 +48,11 @@ export class Gameboard {
     if (this.attacked.has(attack)) throw new Error("Square already attacked");
     this.attacked.add(attack);
 
-    if (this.getSquare([row, col]) === null) this.misses.push([row, col]);
-    else this.board[row][col].hit();
+    if (this.getSquare([row, col]) === null) {
+      this.misses.push([row, col]);
+      return false;
+    } else this.board[row][col].hit();
+    return true;
   }
 
   getMisses() {
