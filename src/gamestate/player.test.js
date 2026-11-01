@@ -29,3 +29,16 @@ test("untriedSquares has no duplicates", () => {
 test("a human player has no untriedSquares", () => {
   expect(player.untriedSquares).toBeUndefined();
 });
+
+test("after a hit, the computer queues the neighbors", () => {
+  player.gameboard.placeShip([4, 3], 2, "vertical");
+  computer.untriedSquares.push([4, 3]);
+
+  const hit = computer.attack(player);
+
+  expect(hit).toBe(true);
+  expect(computer.targetQueue).toContainEqual([3, 3]);
+  expect(computer.targetQueue).toContainEqual([5, 3]);
+  expect(computer.targetQueue).toContainEqual([4, 2]);
+  expect(computer.targetQueue).toContainEqual([4, 4]);
+});
