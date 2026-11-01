@@ -97,5 +97,13 @@ body {
 }
 
 .ship {
-  background-color: bisque;
+  background-color: black;
+}
+
+.hit {
+  background-color: red;
+}
+
+.miss {
+  background-color: darkcyan;
 }

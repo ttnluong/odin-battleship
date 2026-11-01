@@ -24,12 +24,12 @@ export function displayBoard(gameboard, container, isComputer = false) {
 
 export function onSquareClick(container, handler) {
   const board = document.getElementById(container);
-  board.addEventListener("click", (event) => {
-    const square = event.target.closest(".square");
+  board.addEventListener("click", (e) => {
+    const square = e.target.closest(".square");
     if (!square) return;
 
-    row = Number(square.dataset.row);
-    col = Number(square.dataset.col);
+    const row = Number(square.dataset.row);
+    const col = Number(square.dataset.col);
     handler([row, col]);
   });
 }
