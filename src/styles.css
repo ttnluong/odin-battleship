@@ -71,12 +71,39 @@ dialog {
 
 html,
 body {
+  display: grid;
+  place-items: center;
   height: 100vh;
   font-family: "Inter Variable";
   font-weight: 350;
 }
 
-/* SECTION
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+/* HEADER
+====================================================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title{
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.message {
+  font-size: 24px;
+}
+
+/* BOARDS
 ====================================================== */
 
 .boards {
@@ -87,10 +114,23 @@ body {
 .board {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   border: 1px solid red;
 }
+
+
+/* FOOTER
+====================================================== */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* SECTION
+====================================================== */
 
 .square {
   border: 1px solid black;
