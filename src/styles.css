@@ -13,10 +13,13 @@
 ====================================================== */
 
 :root {
-  --c-accent-red: hsl(4, 85%, 63%);
-  --c-accent-orange: hsl(40, 100%, 49%);
-  --c-accent-lime: hsl(84, 54%, 46%);
-  --c-accent-blue: hsl(216, 81%, 60%);
+  --c-green-blue: hsl(180, 89%, 30%);
+  --c-green-cadmium: hsl(171, 86%, 25%);
+  --c-green-teal: hsl(180, 100%, 25%);
+  --c-green-shamrock: hsl(156, 100%, 20%);
+
+  --c-background: hsl(240, 10%, 6%);
+  --c-foreground: hsl(240, 73%, 13%);
 }
 
 /* NORMALISE
@@ -74,8 +77,10 @@ body {
   display: grid;
   place-items: center;
   height: 100vh;
-  font-family: "Inter Variable";
+  font-family: "Quantico";
   font-weight: 350;
+  color: var(--c-green-cadmium);
+  background-color: var(--c-background);
 }
 
 .container {
@@ -116,7 +121,30 @@ body {
   grid-template-columns: repeat(10, 1fr);
   width: 500px;
   height: 500px;
-  border: 1px solid red;
+  padding: 10px;
+  border: 0.5px solid var(--c-green-cadmium);
+  border-radius: 8px;
+  background-color: var(--c-foreground);
+}
+
+.square {
+  margin: 1px;
+  border: 0.5px solid color-mix(in hsl shorter hue, var(--c-foreground), white 40%);
+  border-radius: 6px;
+}
+
+.ship {
+  background-color: var(--c-green-shamrock);
+}
+
+.hit {
+  border: 0.5px solid color-mix(in hsl shorter hue, hsl(0, 69%, 30%), white 40%);
+  background-color: hsl(0, 69%, 30%);
+}
+
+.miss {
+  background: radial-gradient(circle, var(--c-foreground) 6px, transparent 6.5px);
+  background-color: black;
 }
 
 
@@ -124,26 +152,22 @@ body {
 ====================================================== */
 
 .footer {
-  display: flex;
+  display: grid;
+  grid-template: 1fr / 0.4fr 1fr 0.4fr;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
+}
+
+.btn {
+  padding: 10px 12px;
+  border: 0.5px solid var(--c-green-cadmium);
+  border-radius: 10px;
+}
+
+.newgame {
+  grid-column: 3;
 }
 
 /* SECTION
 ====================================================== */
-
-.square {
-  border: 1px solid black;
-}
-
-.ship {
-  background-color: black;
-}
-
-.hit {
-  background-color: red;
-}
-
-.miss {
-  background-color: darkcyan;
-}
