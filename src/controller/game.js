@@ -5,29 +5,10 @@ export class Game {
   constructor() {
     this.player = new Player("Player");
     this.computer = new Player("Computer", true);
-    this.placeShipsRandom(this.player.gameboard);
-    this.placeShipsRandom(this.computer.gameboard);
+    this.player.gameboard.placeShipsRandom();
+    this.computer.gameboard.placeShipsRandom();
     this.winner = null;
     this.started = false;
-  }
-
-  placeShipsRandom(gameboard) {
-    const lengths = [5, 4, 3, 3, 2];
-    for (const length of lengths) {
-      let placed = false;
-      while (!placed) {
-        const row = Math.floor(Math.random() * 10);
-        const col = Math.floor(Math.random() * 10);
-        const direction = Math.random() < 0.5 ? "horizontal" : "vertical";
-
-        try {
-          gameboard.placeShip([row, col], length, direction);
-          placed = true;
-        } catch (error) {
-          if (error.message !== "Invalid placement") throw error;
-        }
-      }
-    }
   }
 
   playTurn(square) {
