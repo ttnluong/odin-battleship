@@ -101,7 +101,7 @@ test("after randomise the board has exactly 17 ship squares", () => {
 });
 
 test("throws after a turn has been played", () => {
-  const target = getSquaresInState(game.computer.gameboard, "empty");
+  const [target] = getSquaresInState(game.computer.gameboard, "empty");
   game.playTurn(target);
   expect(() => game.randomisePlayerFleet()).toThrow("Game has begun");
 });
