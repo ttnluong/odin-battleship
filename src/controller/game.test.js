@@ -83,3 +83,31 @@ test("playing after game is over throws", () => {
   }
   expect(() => game.playTurn([0, 0])).toThrow("Game over");
 });
+
+test("playing after game is over throws", () => {
+  const shipsSquaresComputer = getSquaresInState(
+    game.computer.gameboard,
+    "ship",
+  );
+  for (const shipsSquare of shipsSquaresComputer) {
+    game.playTurn(shipsSquare);
+  }
+  expect(() => game.playTurn([0, 0])).toThrow("Game over");
+});
+
+test("after randomise the board has exactly 17 ship squares", () => {
+  game.randomisePlayerFleet();
+  expect(getSquaresInState(game.player.gameboard, "ship")).toHaveLength(17);
+});
+
+test("throws after a turn has been played", () => {
+  const target = getSquaresInState(game.computer.gameboard, "empty");
+  game.playTurn(target);
+  expect(() => game.randomisePlayerFleet()).toThrow("Game has begun");
+});
+
+test("still works after an invalid first attack", () => {
+  expect(() => game.playTurn([10, 10])).toThrow();
+  expect(() => game.randomisePlayerFleet()).not.toThrow();
+  expect(getSquaresInState(game.player.gameboard, "ship")).toHaveLength(17);
+});

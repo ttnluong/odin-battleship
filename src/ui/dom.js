@@ -37,3 +37,10 @@ export function onSquareClick(container, handler) {
 export function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
+
+export function randomiseFleet(gameboard) {
+  const btn = document.getElementById("randomise");
+  btn.addEventListener("click", (e) => {
+    gameboard.placeShipsRandom();
+  });
+}
