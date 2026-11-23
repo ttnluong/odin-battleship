@@ -170,6 +170,10 @@ body {
   border-radius: 10px;
 }
 
+.btn:hover {
+  background-color: color-mix(in hsl shorter hue, var(--c-green-cadmium), black 75%);
+}
+
 .newgame {
   grid-column: 3;
 }
