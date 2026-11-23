@@ -133,6 +133,11 @@ body {
   border-radius: 6px;
 }
 
+.square:hover {
+  background: radial-gradient(circle, var(--c-foreground) 6px, transparent 6.5px);
+  background-color: color-mix(in hsl shorter hue, var(--c-foreground), white 20%);
+}
+
 .ship {
   background-color: var(--c-green-shamrock);
 }

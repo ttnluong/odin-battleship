@@ -34,6 +34,7 @@ export class Game {
     this.started = false;
     this.computer.gameboard = new Gameboard();
     this.player.gameboard = new Gameboard();
+    this.computer.gameboard.placeShipsRandom();
     this.player.gameboard.placeShipsRandom();
   }
 }
