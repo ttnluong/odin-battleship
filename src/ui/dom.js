@@ -38,9 +38,7 @@ export function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
 
-export function randomiseFleet(gameboard) {
+export function onRandomiseClick(handler) {
   const btn = document.getElementById("randomise");
-  btn.addEventListener("click", (e) => {
-    gameboard.placeShipsRandom();
-  });
+  btn.addEventListener("click", handler);
 }

@@ -1,6 +1,11 @@
 import "./styles.css";
 import { Game } from "./controller/game.js";
-import { displayBoard, onSquareClick, showMessage } from "./ui/dom.js";
+import {
+  displayBoard,
+  onRandomiseClick,
+  onSquareClick,
+  showMessage,
+} from "./ui/dom.js";
 
 const game = new Game();
 
@@ -29,6 +34,20 @@ function handleAttack(square) {
   if (game.winner) showWinner();
 }
 
+function handleRandomise() {
+  try {
+    game.randomisePlayerFleet();
+  } catch (error) {
+    showMessage(error.message);
+    return;
+  }
+
+  render();
+  showMessage("");
+}
+
 onSquareClick("computerboard", handleAttack);
+
+onRandomiseClick(handleRandomise);
 
 render();
