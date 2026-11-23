@@ -29,4 +29,11 @@ export class Game {
     this.player.gameboard = new Gameboard();
     this.player.gameboard.placeShipsRandom();
   }
+
+  newGame() {
+    this.started = false;
+    this.computer.gameboard = new Gameboard();
+    this.player.gameboard = new Gameboard();
+    this.player.gameboard.placeShipsRandom();
+  }
 }

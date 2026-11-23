@@ -4,6 +4,7 @@ import {
   displayBoard,
   onRandomiseClick,
   onSquareClick,
+  onNewGameClick,
   showMessage,
 } from "./ui/dom.js";
 
@@ -46,8 +47,22 @@ function handleRandomise() {
   showMessage("");
 }
 
+function handleNewGame() {
+  try {
+    game.newGame();
+  } catch (error) {
+    showMessage(error.message);
+    return;
+  }
+
+  render();
+  showMessage("");
+}
+
 onSquareClick("computerboard", handleAttack);
 
 onRandomiseClick(handleRandomise);
+
+onNewGameClick(handleNewGame);
 
 render();

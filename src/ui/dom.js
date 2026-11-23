@@ -42,3 +42,8 @@ export function onRandomiseClick(handler) {
   const btn = document.getElementById("randomise");
   btn.addEventListener("click", handler);
 }
+
+export function onNewGameClick(handler) {
+  const btn = document.getElementById("newgame");
+  btn.addEventListener("click", handler);
+}
